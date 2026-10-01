@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project>
+	<Target Name="CopyToBin" AfterTargets="Build">
+		<Copy SourceFiles="$(TargetPath)" DestinationFiles="bin\$(MSBuildProjectName).mfextension"/>
+		<Message Text="Output: bin\$(MSBuildProjectName).mfextension" Importance="high"/>
+	</Target>
+
+	<Target Name="InstallToMonkeFrames" AfterTargets="Build" Condition="Exists('$(ExtensionsPath)')">
+		<Copy SourceFiles="$(TargetPath)" DestinationFiles="$(ExtensionsPath)\$(MSBuildProjectName).mfextension"/>
+		<Message Text="Copied extension to extensions folder: $(ExtensionsPath)\$(MSBuildProjectName).mfextension" Importance="high"/>
+	</Target>
+</Project>
