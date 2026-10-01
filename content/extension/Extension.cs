@@ -1,17 +1,18 @@
 ﻿using MonkeFrames.Extensions;
 
-namespace MyExtension;
-
-[Info("com.myname.myextension", "MyExtension", "1.0.0")]
-public class Extension : FramesExtension
+namespace MyExtension
 {
-    public void OnLoad()
+    [Info("com.myname.myextension", "myextension", "1.0.0")]
+    public class Extension : FramesExtension
     {
-        CreateMenu("MyExtension/Display Hello World", OnHelloWorldPressed);
-    }
+        public override void OnLoad()
+        {
+            CreateMenu("MyExtension/Display Hello World", OnHelloWorldPressed);
+        }
 
-    public void OnHelloWorldPressed()
-    {
-        DisplayMessageBox("MyExtension", "Hello world!");
+        public void OnHelloWorldPressed()
+        {
+            ShowMessageBox("MyExtension", "Hello world!");
+        }
     }
 }

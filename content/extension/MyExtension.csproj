@@ -1,31 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-    <DebugType Condition="'$(Configuration)'=='Debug'">embedded</DebugType>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<DebugType Condition="'$(Configuration)'=='Debug'">embedded</DebugType>
+	</PropertyGroup>
 
-  <ItemGroup>
+	<ItemGroup>
 		<Reference Include="HarmonyLib">
 			<HintPath>$(BepInExAssembliesPath)\0Harmony.dll</HintPath>
 		</Reference>
 	</ItemGroup>
 
-  <ItemGroup>
-		<_MFDlls Include="$(MonkeFramesAssemblyPath)\*.dll"/>
-
-		<Reference Include="@(_MFDlls)">
-			<HintPath>%(Identity)</HintPath>
-		</Reference>
-	</ItemGroup>
-
-	<!-- This item group automatically imports all game assemblies except for problematic ones-->
 	<ItemGroup>
-		<_GameDlls Include="$(GameAssemblyPath)\*.dll" Exclude="$(GameAssemblyPath)\mscorlib.dll;$(GameAssemblyPath)\System*.dll" />
+		<Reference Include="$(MonkeFramesAssemblyPath)\*.dll">
+			<HintPath>%(Identity)</HintPath>
+		</Reference>
 
-		<Reference Include="@(_GameDlls)">
+		<Reference Include="$(GameAssemblyPath)\*.dll"
+             Exclude="$(GameAssemblyPath)\mscorlib.dll;$(GameAssemblyPath)\System*.dll;$(GameAssemblyPath)\netstandard.dll">
 			<HintPath>%(Identity)</HintPath>
 		</Reference>
 	</ItemGroup>
-  
+
 </Project>
