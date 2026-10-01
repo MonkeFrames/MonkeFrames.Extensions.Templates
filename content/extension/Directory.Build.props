@@ -4,11 +4,11 @@
         <GamePath>C:\Program Files (x86)\Steam\steamapps\common\Gorilla Tag</GamePath>
         <BepInExAssembliesPath>$(GamePath)\BepInEx\core</BepInExAssembliesPath>
         <GameAssemblyPath>$(GamePath)\Gorilla Tag_Data\Managed</GameAssemblyPath>
-        <MonkeFramesAssemblyPath>$(GamePath)\BepInEx\plugins\MonkeFrames</BepInExAssembliesPath>
+        <MonkeFramesAssemblyPath>$(GamePath)\BepInEx\plugins\MonkeFrames</MonkeFramesAssemblyPath>
     </PropertyGroup>
 
     <PropertyGroup>
-        <DocumentsPath>$([System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::MyDocuments))</MyDocumentsPath>
+		<DocumentsPath>$(registry:HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders@Personal)</DocumentsPath>
         <ExtensionsPath>$([System.IO.Path]::Combine($(DocumentsPath), 'MonkeFrames', 'extensions'))</ExtensionsPath>
     </PropertyGroup>
 </Project>
